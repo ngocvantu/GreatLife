@@ -8,5 +8,6 @@
 </head>
 <body>
 	wwww  khóng
+	<a href="/Fast/Video" >Video</a>
 </body>
 </html>
