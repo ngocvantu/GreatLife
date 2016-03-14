@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	sd
-	<a href="/Database/Video" >Tunguye </a>
+video page
 </body>
 </html>
