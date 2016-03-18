@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import com.hibernate.HibernateUtil;
 import com.model.TuVungUtil;
 import com.object.TuVung;
 
@@ -51,7 +56,15 @@ public class NhapTuvung extends HttpServlet {
 		
 		if(tuvung!=null && nghia!= null && !tuvung.equals("") && !nghia.equals("")){
 			TuVung tuVung2 = new TuVung(tuvung, nghia, vidu1, vidu2, tuloai, noihoc, tudongnghia, tutrainghia, new Date(), ghichu, false, 0);
-			TuVungUtil.addTuVung(tuVung2);
+//			TuVungUtil.addTuVung(tuVung2);
+			
+			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			session.save(tuVung2);
+			session.getTransaction().commit();
+			session.close();
+			
 		}
 		System.out.println(tuvung);
 		

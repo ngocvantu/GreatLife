@@ -1,6 +1,7 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -9,6 +10,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.hibernate.HibernateUtil;
+import com.model.TuVungUtil;
+import com.object.TuVung;
 
 /**
  * Servlet implementation class AnhViet
@@ -36,7 +44,8 @@ public class AnhViet extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("khong", "coma");
+		List<TuVung> listTuVung = TuVungUtil.getAllTuVung();
+		request.setAttribute("sizeTuVung", listTuVung.size());
 		RequestDispatcher rd=request.getRequestDispatcher("anhviet.jsp");  
 		rd.forward(request, response);
 //		response.sendRedirect(request.getContextPath() + "/anhviet.jsp");

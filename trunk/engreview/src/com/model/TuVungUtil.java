@@ -4,12 +4,26 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.hibernate.HibernateUtil;
 import com.object.TuVung;
 
 public class TuVungUtil {
 	Connection connection;
 	PreparedStatement statement;
+	
+	public static List getAllTuVung() {
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		List<TuVung> list = session.createCriteria(TuVung.class).list();
+		session.close();
+		return list;
+	}
 	
 	public static void addTuVung(TuVung tuvung){
 		PreparedStatement statement ;

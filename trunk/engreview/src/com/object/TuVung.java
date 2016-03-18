@@ -2,23 +2,53 @@ package com.object;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tuvung")
 public class TuVung {
 	
+	@Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@Column(name = "id" ) 
+	private int id;
+	@Column(name = "tuvung")
 	private String tuvung;
+	@Column(name = "nghia")
 	private String nghia;
+	@Column(name = "vidu1") 
 	private String vidu1;
+	@Column(name = "vidu2")
 	private String vidu2;
+	@Column(name = "tuloai")
 	private String tuloai;
+	@Column(name = "noihoc")
 	private String noihoc;
+	@Column(name = "tudongnghia")
 	private String tudongnghia;
+	@Column(name = "tutrainghia")
 	private String tutrainghia;
+	@Column(name = "ngaynhap")
 	private Date ngaynhap;
+	@Column(name = "ghichu")
 	private String ghichu;
-	
+	@Column(name = "dathuoc")
 	private boolean dathuoc;
+	@Column(name = "solanon")
 	private int solanon;
 	
 	
+
+	public TuVung() {
+		super();
+	}
+
+
 
 	public TuVung(String tuvung, String nghia, String vidu1, String vidu2,
 			String tuloai, String noihoc, String tudongnghia,
@@ -37,6 +67,18 @@ public class TuVung {
 		this.ghichu = ghichu;
 		this.dathuoc = dathuoc;
 		this.solanon = solanon;
+	}
+
+
+
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 

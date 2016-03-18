@@ -1,40 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js" ></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/index.js" ></script>
-<link  rel="stylesheet" href="<%=request.getContextPath()%>/css/index.css" >
+<%@ include file="/import.jsp" %> 
 <title>Nhập từ vựng</title>
-<script type="text/javascript">
-$( document ).ready(function(){
-	$("#btntest").click(function(){
-		alert("asdf");
-		$.ajax({
-		    url: '<%=request.getContextPath()%>/listvocal',
-		    data: "kjh",
-		    type: 'post',
-		    dataType:'text',
-		    success: function(data){ 
-		        console.log(data);
-		        alert(data);
-		    }
-		});
-	});
-	
-	$("#home").addClass("active");
-});
-
-</script>
-
 </head>
 <body>
 	<%@ include file="/header.jsp" %> 
 	<hr>
-	
-	
 	hello review
 	<a href="<%=request.getContextPath()%>/nhaptuvung" >list vocal</a>
 	<div id="divtest" ></div>
@@ -94,6 +69,27 @@ $( document ).ready(function(){
 
 	<hr>
 	 <%@ include file="/footer.jsp" %>
+	 
+	 
+	 <script type="text/javascript">
+$( document ).ready(function(){
+	$("#btntest").click(function(){
+		alert("asdf");
+		$.ajax({
+		    url: '<%=request.getContextPath()%>/listvocal',
+		    data: "kjh",
+		    type: 'post',
+		    dataType:'text',
+		    success: function(data){ 
+		        console.log(data);
+		        alert(data);
+		    }
+		});
+	});
+	
+	$("#home").addClass("active");
+});
+</script>
 </body>
 </html>
 
