@@ -1,6 +1,7 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -44,11 +45,21 @@ public class AnhViet extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<TuVung> listTuVung = TuVungUtil.getAllTuVung();
-		request.setAttribute("sizeTuVung", listTuVung.size());
-		RequestDispatcher rd=request.getRequestDispatcher("anhviet.jsp");  
-		rd.forward(request, response);
-//		response.sendRedirect(request.getContextPath() + "/anhviet.jsp");
+		String ma = request.getParameter("ma");
+		if(ma==null){
+			List<TuVung> listTuVung = TuVungUtil.getAllTuVung();
+			request.setAttribute("listTuVung", listTuVung);
+			RequestDispatcher rd=request.getRequestDispatcher("anhviet.jsp");  
+			rd.forward(request, response);
+//			response.sendRedirect(request.getContextPath() + "/anhviet.jsp");
+		} else if(ma.equals("xoa")) {
+			PrintWriter writer = response.getWriter();
+			response.setContentType("text/plain;charset=UTF-8");
+			String id = request.getParameter("id");
+			TuVungUtil.xoa(id);
+			RequestDispatcher rd=request.getRequestDispatcher("anhviet.jsp");  
+			rd.forward(request, response);
+		}
 	}
 
 	/**

@@ -73,8 +73,8 @@
 	 
 	 <script type="text/javascript">
 $( document ).ready(function(){
-	$("#btntest").click(function(){
-		alert("asdf");
+	 
+// 		alert("asdf");
 		$.ajax({
 		    url: '<%=request.getContextPath()%>/listvocal',
 		    data: "kjh",
@@ -82,10 +82,10 @@ $( document ).ready(function(){
 		    dataType:'text',
 		    success: function(data){ 
 		        console.log(data);
-		        alert(data);
+// 		        alert(data);
 		    }
 		});
-	});
+	 
 	
 	$("#home").addClass("active");
 });
