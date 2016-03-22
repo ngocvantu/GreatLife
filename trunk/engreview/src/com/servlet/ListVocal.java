@@ -43,7 +43,7 @@ public class ListVocal extends HttpServlet {
 		Session  session =   sessionFactory.openSession();
 		session.beginTransaction();
 		Query query = session.createQuery("FROM TuVung");
-		query.setCacheable(false);
+//		query.setCacheable(false);
 		List<TuVung> list = query.list(); 
 		session.getTransaction().commit();
 		session.close();
@@ -62,7 +62,7 @@ public class ListVocal extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
 	}
 
 }

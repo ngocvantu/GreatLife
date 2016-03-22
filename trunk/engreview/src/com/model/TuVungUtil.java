@@ -25,7 +25,7 @@ public class TuVungUtil {
 		Session  session =   sessionFactory.openSession();
 		session.beginTransaction();
 		Query query = session.createQuery("delete TuVung where id = :id");
-		query.setCacheable(false);
+//		query.setCacheable(false);
 		System.out.println(id1);
 		query.setParameter("id", id1);
 		query.executeUpdate();
@@ -39,11 +39,37 @@ public class TuVungUtil {
 		Session session =  sessionFactory.openSession();
 		session.beginTransaction();
 		Query query = session.createQuery("FROM TuVung");
-		query.setCacheable(false);
+//		query.setFirstResult(1);
+//		query.setMaxResults(1);
+//		query.setCacheable(false);
 		List<TuVung> list = query.list(); 
 		session.getTransaction().commit();
 		session.close();
 		return list;
+	}
+	
+	public static List<TuVung> getTuVungByOrder(int order) {
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session =  sessionFactory.openSession();
+		session.beginTransaction();
+		Query query = session.createQuery("FROM TuVung");
+		query.setFirstResult(order);
+		query.setMaxResults(1);
+//		query.setCacheable(false);
+		List<TuVung> list = query.list(); 
+		session.getTransaction().commit();
+		session.close();
+		return list;
+	}
+	
+	public static TuVung getTuVungById(int id) {
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session =  sessionFactory.openSession();
+		session.beginTransaction();  
+		TuVung tuvung = (TuVung) session.get(TuVung.class, id);
+		session.getTransaction().commit();
+		session.close();
+		return tuvung;
 	}
 	
 	public static void addTuVung(TuVung tuvung){

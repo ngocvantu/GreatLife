@@ -13,7 +13,7 @@ ul {
     list-style: none;
     margin-top: 10px;
 }
-
+ 
 li {
  	float: left; 
 }
@@ -22,7 +22,7 @@ li a {
     display: block;
     color: #666;
     text-align: center;
-    padding: 14px 16px;
+    padding: 5px 16px;
     text-decoration: none;
 }
 
@@ -41,7 +41,7 @@ li a.active {
   <li><a id="home"  href="<%=request.getContextPath()%>">Home</a></li> 
   <li><a id="anhviet" href="<%=request.getContextPath()%>/anhviet">Anh-Việt</a></li>
   <li><a id="vietanh" href="<%=request.getContextPath()%>/vietanh">Việt-Anh</a></li>
-  <li><a id="dathuoc" href="<%=request.getContextPath()%>/dathuoc">Đã thuộc</a></li>
+  <li><a id="chitiet" href="<%=request.getContextPath()%>/chitiet">Chi tiết</a></li>
 </ul>
 </body>
 </html>

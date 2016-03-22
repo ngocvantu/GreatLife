@@ -39,8 +39,8 @@ public class TuVung {
 	private String ghichu;
 	@Column(name = "dathuoc")
 	private boolean dathuoc;
-	@Column(name = "solanon")
-	private int solanon;
+	@Column(name = "solanon" )
+	private int solanon = 0;
 	
 	
 
@@ -222,7 +222,7 @@ public class TuVung {
 
 
 	public void setSolanon(int solanon) {
-		this.solanon = solanon;
+	        this.solanon = solanon;
 	}
 
 

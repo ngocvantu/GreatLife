@@ -16,23 +16,34 @@
 	color: blue;
 }
 
+	a.linktuvung{
+	text-decoration: none;
+	color: #3b5998;
+	}
+	
+	a.linktuvung:HOVER {
+	text-decoration: underline;	
+}
 </style>
 </head>
 <body>
 	<%@ include file="/header.jsp" %> 
 	<hr>
 		<%List<TuVung> listTuVung = (List<TuVung>)request.getAttribute("listTuVung"); %>
-	<table id="tuvung" >
+		Số từ vựng: <%=listTuVung.size() %>
+	<table id="tuvung" style="width: 100%" >
 	<c:forEach items="${listTuVung}"  var="tuvung" >
 		<tr>
-			<td>${tuvung.tuvung }</td>
-			<td style="padding-left: 30px" ><a href="" onclick="xoa(${tuvung.id })"  >Xóa</a></td>
+			<td><a class="linktuvung" href="<%=request.getContextPath()%>/chitiet?id=${tuvung.id}" > ${tuvung.tuvung }</a></td>
+			<td style="padding-left: 30px" ><a href="#" onclick="xoa(${tuvung.id })"  >Xóa</a></td>
+			<td style="text-align: right;" >${tuvung.nghia }</td>
 		</tr>
 	</c:forEach>
 	</table>
 	<hr>
 	 <%@ include file="/footer.jsp" %>
 
+<% request.removeAttribute("listTuVung") ;%>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#anhviet").addClass("active");
@@ -44,9 +55,12 @@
 			    type: 'post',
 			    dataType:'text',
 			    success: function(data){ 
+			    	window.location.href = "/engreview/anhviet"; 
 			    }
 			});	
 		}
 	</script>
+	
+	
 </body>
 </html>

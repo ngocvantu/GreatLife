@@ -47,6 +47,9 @@ public class AnhViet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String ma = request.getParameter("ma");
 		if(ma==null){
+			request.setCharacterEncoding("UTF-8");
+			response.setContentType("text/plain;charset=UTF-8");
+			response.setCharacterEncoding("UTF-8");
 			List<TuVung> listTuVung = TuVungUtil.getAllTuVung();
 			request.setAttribute("listTuVung", listTuVung);
 			RequestDispatcher rd=request.getRequestDispatcher("anhviet.jsp");  
@@ -57,8 +60,8 @@ public class AnhViet extends HttpServlet {
 			response.setContentType("text/plain;charset=UTF-8");
 			String id = request.getParameter("id");
 			TuVungUtil.xoa(id);
-			RequestDispatcher rd=request.getRequestDispatcher("anhviet.jsp");  
-			rd.forward(request, response);
+//			RequestDispatcher rd=request.getRequestDispatcher("anhviet.jsp");  
+//			rd.forward(request, response);
 		}
 	}
 
