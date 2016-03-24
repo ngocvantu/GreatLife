@@ -38,6 +38,9 @@ public class ChiTiet extends HttpServlet {
 			request.setAttribute("listTuVung", listTuVung);
 		} else {
 			TuVung listTuVung = TuVungUtil.getTuVungById(Integer.valueOf(id));
+			if(listTuVung == null){
+				  listTuVung = TuVungUtil.getTuVungLast();
+			}
 			request.setAttribute("listTuVung", listTuVung);
 		}
 		RequestDispatcher rd=request.getRequestDispatcher("chitiet.jsp");  
