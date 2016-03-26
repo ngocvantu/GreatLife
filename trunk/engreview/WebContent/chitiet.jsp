@@ -9,7 +9,7 @@
 <head> 
 <%@ include file="/import.jsp" %>
 <link  rel="stylesheet" href="<%=request.getContextPath()%>/css/chitiet/chitiet.css" >
-<title>Chi tiết từ vựng</title>
+<title>Chi tiết từ vựng --</title>
 </head>
 <body>
 
