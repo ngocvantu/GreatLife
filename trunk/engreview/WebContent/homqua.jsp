@@ -9,7 +9,7 @@
 <head>
 <%@ include file="/import.jsp" %> 
 
-<title>Toeic 600</title>
+<title>Hôm qua</title>
 <style type="text/css">
 table#tuvung {
 	font-size: 20px;
@@ -50,7 +50,7 @@ a.linktuvung:HOVER {
 	<hr>
 		<%List<TuVung> listTuVung = (List<TuVung>)request.getAttribute("listTuVung");
 		%>
-		Số từ vựng toeic 600: <%=listTuVung.size() %> <br>
+		Số từ vựng hôm qua học: <%=listTuVung.size() %> <br>
 	<c:set var="i" value="1" scope="page" />
 	<button id="hienthixoa" >Hiển thị xóa</button>
 	<button id="hienthinghia" >Hiển thị nghĩa</button>
@@ -70,7 +70,7 @@ a.linktuvung:HOVER {
 <% request.removeAttribute("listTuVung") ;%>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("#toeic600").addClass("active");
+			$("#homqua").addClass("active");
 			 
 			$("#hienthinghia").click(function() {
 				$(".nghia").toggleClass("display");

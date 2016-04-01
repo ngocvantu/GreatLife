@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -63,6 +64,122 @@ public class TuVungUtil {
 		session.getTransaction().commit();
 		session.close();
 		return list;
+	}
+	
+	public static List<TuVung> getAllTuVungHomqua() {
+		List<TuVung> listTuVung = new ArrayList<TuVung>();
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session =  sessionFactory.openSession();
+		session.beginTransaction();
+		Query query = session.createQuery("FROM TuVung ");
+//		query.setParameter("xxx", "600");
+//		query.setFirstResult(1);
+//		query.setMaxResults(1);
+		List<TuVung> list = query.list();
+		for (TuVung tuVung : list) {
+			if (DateUtil.dateDiff(tuVung.getNgaynhap(), new Date()) == 1) {
+				listTuVung.add(tuVung);
+			}
+		}
+		session.getTransaction().commit();
+		session.close();
+		
+		return listTuVung;
+	}
+	
+	public static List<TuVung> getAllTuVungHomNay() {
+		List<TuVung> listTuVung = new ArrayList<TuVung>();
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session =  sessionFactory.openSession();
+		session.beginTransaction();
+		Query query = session.createQuery("FROM TuVung ");
+//		query.setParameter("xxx", "600");
+//		query.setFirstResult(1);
+//		query.setMaxResults(1);
+		List<TuVung> list = query.list();
+		for (TuVung tuVung : list) {
+			if (DateUtil.dateDiff(tuVung.getNgaynhap(), new Date()) == 0) {
+				listTuVung.add(tuVung);
+			}
+		}
+		session.getTransaction().commit();
+		session.close();
+		
+		return listTuVung;
+	}
+	
+	public static List<TuVung> getAllTuVungDays(long diff) {
+		List<TuVung> listTuVung = new ArrayList<TuVung>();
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session =  sessionFactory.openSession();
+		session.beginTransaction();
+		Query query = session.createQuery("FROM TuVung ");
+//		query.setParameter("xxx", "600");
+//		query.setFirstResult(1);
+//		query.setMaxResults(1);
+		List<TuVung> list = query.list();
+		for (TuVung tuVung : list) {
+			if (DateUtil.dateDiff(tuVung.getNgaynhap(), new Date()) == diff) {
+				listTuVung.add(tuVung);
+			}
+		}
+		session.getTransaction().commit();
+		session.close();
+		
+		return listTuVung;
+	}
+	
+	public static List<TuVung> getAllTuVungFibonaci() {
+		List<TuVung> listTuVung = new ArrayList<TuVung>();
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session =  sessionFactory.openSession();
+		session.beginTransaction();
+		Query query = session.createQuery("FROM TuVung ");
+//		query.setParameter("xxx", "600");
+//		query.setFirstResult(1);
+//		query.setMaxResults(1);
+		List<TuVung> list = query.list();
+		for (TuVung tuVung : list) {
+			if (DateUtil.dateDiff(tuVung.getNgaynhap(), new Date()) == 0 ||
+					DateUtil.dateDiff(tuVung.getNgaynhap(), new Date()) == 1 ||
+					DateUtil.dateDiff(tuVung.getNgaynhap(), new Date()) == 2 ||
+					DateUtil.dateDiff(tuVung.getNgaynhap(), new Date()) == 3 ||
+					DateUtil.dateDiff(tuVung.getNgaynhap(), new Date()) == 5 ||
+					DateUtil.dateDiff(tuVung.getNgaynhap(), new Date()) == 8 ||
+					DateUtil.dateDiff(tuVung.getNgaynhap(), new Date()) == 13 ||
+					DateUtil.dateDiff(tuVung.getNgaynhap(), new Date()) == 21 ||
+					DateUtil.dateDiff(tuVung.getNgaynhap(), new Date()) == 34 ||
+					DateUtil.dateDiff(tuVung.getNgaynhap(), new Date()) == 55 ||
+					DateUtil.dateDiff(tuVung.getNgaynhap(), new Date()) == 89 ||
+					DateUtil.dateDiff(tuVung.getNgaynhap(), new Date()) == 144) {
+				listTuVung.add(tuVung);
+			}
+		}
+		session.getTransaction().commit();
+		session.close();
+		
+		return listTuVung;
+	}
+	
+	public static List<TuVung> getAllTuVungHomKia() {
+		List<TuVung> listTuVung = new ArrayList<TuVung>();
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session =  sessionFactory.openSession();
+		session.beginTransaction();
+		Query query = session.createQuery("FROM TuVung ");
+//		query.setParameter("xxx", "600");
+//		query.setFirstResult(1);
+//		query.setMaxResults(1);
+		List<TuVung> list = query.list();
+		for (TuVung tuVung : list) {
+			if (DateUtil.dateDiff(tuVung.getNgaynhap(), new Date()) == 2) {
+				listTuVung.add(tuVung);
+			}
+		}
+		session.getTransaction().commit();
+		session.close();
+		
+		return listTuVung;
 	}
 	
 	public static List<TuVung> getTuVungByOrder(int order) {

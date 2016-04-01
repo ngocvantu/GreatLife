@@ -9,7 +9,7 @@
 <head>
 <%@ include file="/import.jsp" %> 
 
-<title>Toeic 600</title>
+<title>Theo dõi</title>
 <style type="text/css">
 table#tuvung {
 	font-size: 20px;
@@ -48,29 +48,22 @@ a.linktuvung:HOVER {
 <body>
 	<%@ include file="/header.jsp" %> 
 	<hr>
-		<%List<TuVung> listTuVung = (List<TuVung>)request.getAttribute("listTuVung");
+		<%long homnay =  Long.parseLong((String)request.getAttribute("homnay"));
+		long homqua =  Long.parseLong((String)request.getAttribute("homqua"));
+		long homkia =  Long.parseLong((String)request.getAttribute("homkia"));
+		long homkiaf =  Long.parseLong((String)request.getAttribute("homkiaf"));
+		long homkiax =  Long.parseLong((String)request.getAttribute("homkiax"));
+		long homkiar =  Long.parseLong((String)request.getAttribute("homkiar"));
+		long homkiaj =  Long.parseLong((String)request.getAttribute("homkiaj"));
 		%>
-		Số từ vựng toeic 600: <%=listTuVung.size() %> <br>
-	<c:set var="i" value="1" scope="page" />
-	<button id="hienthixoa" >Hiển thị xóa</button>
-	<button id="hienthinghia" >Hiển thị nghĩa</button>
-	<table id="tuvung" style="width: 100%" >
-	<c:forEach items="${listTuVung}"  var="tuvung" >
-		<tr>
-			<td><a class="linktuvung" href="<%=request.getContextPath()%>/chitiet?id=${tuvung.id}" >${i}.  ${tuvung.tuvung }</a></td>
-			<td class="xoa" style="padding-left: 30px" ><a href="#" onclick="xoa(${tuvung.id })"  >Xóa</a></td>
-			<td class="nghia" style="text-align: right;" >${tuvung.nghia } . ${i}</td>
-		</tr>
-		<c:set var="i" value="${i + 1}" scope="page"/>
-	</c:forEach>
-	</table>
+	<canvas id="myChart" width="1100px" height="400px"></canvas>
 	<hr>
 	 <%@ include file="/footer.jsp" %>
 
 <% request.removeAttribute("listTuVung") ;%>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("#toeic600").addClass("active");
+			$("#theodoi").addClass("active");
 			 
 			$("#hienthinghia").click(function() {
 				$(".nghia").toggleClass("display");
@@ -80,6 +73,28 @@ a.linktuvung:HOVER {
 			$("#hienthixoa").click(function() {
 				$(".xoa").toggleClass("display");
 				$('#hienthixoa').html()==="Hiển thị xóa"?$('#hienthixoa').html("Tắt xóa"):$('#hienthixoa').html("Hiển thị xóa");
+			});
+			
+			var data = {
+				    labels: ["Hôm kịa", "Hôm kỉa", "Hôm kĩa", "Hôm kìa", "Hôm kia", "Hôm qua", "Hôm nay"],
+				    datasets: [ 
+				        {
+				            label: "My Second dataset",
+				            fillColor: "rgba(151,187,205,0.2)",
+				            strokeColor: "rgba(0,0,255,1)",
+				            pointColor: "rgba(0,0,255,1)",
+				            pointStrokeColor: "#fff",
+				            pointHighlightFill: "#fff",
+				            pointHighlightStroke: "rgba(0,0,255,1)",
+				            data: [<%=homkiaj %>, <%=homkiar %>, <%=homkiax %>, <%=homkiaf %>, <%=homkia %>, <%=homqua %>, <%=homnay %>]
+				        }
+				    ]
+				};
+			var ctx = document.getElementById("myChart").getContext("2d");
+			var myLineChart = new Chart(ctx).Line(data, {
+			    bezierCurve: false,
+			    scaleFontColor: "#0000ff",
+			    scaleFontSize: 13,
 			});
 		});
 		function xoa(id) {
@@ -93,7 +108,9 @@ a.linktuvung:HOVER {
 			    }
 			});	
 		}
+		
 	</script>
+	
 	
 	
 </body>
