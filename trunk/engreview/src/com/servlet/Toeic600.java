@@ -15,16 +15,16 @@ import com.model.TuVungUtil;
 import com.object.TuVung;
 
 /**
- * Servlet implementation class VietAnh
+ * Servlet implementation class Toeic600
  */
-@WebServlet("/vietanh")
-public class VietAnh extends HttpServlet {
+@WebServlet("/toeic600")
+public class Toeic600 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VietAnh() {
+    public Toeic600() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,9 +38,9 @@ public class VietAnh extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 			response.setContentType("text/plain;charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");
-			List<TuVung> listTuVung = TuVungUtil.getAllTuVung();
+			List<TuVung> listTuVung = TuVungUtil.getAllTuVungToeic();
 			request.setAttribute("listTuVung", listTuVung);
-			RequestDispatcher rd=request.getRequestDispatcher("vietanh.jsp");  
+			RequestDispatcher rd=request.getRequestDispatcher("toeic600.jsp");  
 			rd.forward(request, response);
 //			response.sendRedirect(request.getContextPath() + "/anhviet.jsp");
 		} else if(ma.equals("xoa")) {

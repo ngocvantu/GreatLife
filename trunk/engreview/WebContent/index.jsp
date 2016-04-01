@@ -12,6 +12,7 @@
 	<hr>
 	hello review
 	<a href="<%=request.getContextPath()%>/nhaptuvung" >list vocal</a>
+	Số từ vựng: <%=request.getSession().getAttribute("sotuvung") %>
 	<div id="divtest" ></div>
 	<button id="btntest" >Test ajax</button>
 	
@@ -36,11 +37,11 @@
 			</tr>
 			<tr>
 				<td>Từ loại:</td>
-				<td><input id="tuloai" name="tuloai" type="text" size="50"></td>
+				<td><input id="tuloai" name="tuloai" type="text" size="50"  value="${sessionScope.tuloai}"  ></td>
 			</tr>
 			<tr>
 				<td>Nơi học:</td>
-				<td><input id="noihoc" name="noihoc" type="text" size="50"></td>
+				<td><input id="noihoc" name="noihoc" type="text" size="50"  value="${sessionScope.noihoc}" ></td>
 			</tr>
 			<tr>
 				<td>Từ đồng nghĩa:</td>
@@ -56,7 +57,7 @@
 			</tr>
 			<tr>
 				<td>Ghi chú:</td>
-				<td><input id="ghichu" name="ghichu" type="text" size="50"></td>
+				<td><input id="ghichu" name="ghichu" type="text" size="50"  value="${sessionScope.ghichu}"  ></td>
 			</tr>
 			<tr>
 				<td>  </td>

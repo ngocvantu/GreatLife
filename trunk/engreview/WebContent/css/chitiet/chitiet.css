@@ -1,7 +1,8 @@
 @CHARSET "UTF-8";
 
 #chitiet_div_vocal{
-	text-align: center ;
+	text-align: center;
+	margin-top: 10px;
 }
 
 #chitiet_span_vocal {
@@ -12,10 +13,18 @@
 	background-color: white;
 	box-shadow: 0px 0px 6px #888888;
 	width: 600px;  
+
 }
 
 #chitiet_span_vocal:HOVER { 
 	background-color: #33CCCC;
+}
+
+#button{
+	margin: 0px auto;
+	margin-top: 20px;
+	text-align: center;
+	
 }
 
 .chitiet_btn{
@@ -37,13 +46,11 @@
 }
 
 #chitiet_btn_back {
-	position: absolute;
 	left: 300px;
 	top: 125px;
 }
 
 #chitiet_btn_next {
-	position: absolute;
 	right: 300px;
 	top: 125px;
 }
@@ -61,7 +68,6 @@
 	-webkit-box-shadow:inset 0px 34px 0px -15px #400000;
 	box-shadow:inset 0px 34px 0px -15px #400000;
 	background-color:#400000;
-	position: absolute; 
 	top:1px;
 }
  
@@ -99,6 +105,7 @@ table td {
 	border-style: solid;
 	border-color: #666666;
 	background-color: #ffffff;
+	height: 23px;
 }
 
 table tr td:FIRST-CHILD{
@@ -107,4 +114,62 @@ table tr td:FIRST-CHILD{
 	color: red;
 }
 
+table tr td input {
+	display: none;
+}
+
+form {
+	margin: 0px;
+	padding: 0px;
+}
+
+#chitiet_btn_sua{
+	margin: 10px 0px 10px 137px;
+}
+
+#chitiet_btn_xong{
+	margin: 10px 0px 10px 114px;
+}
+
+.btn_huy {
+	-moz-box-shadow:inset 0px 34px 0px -15px #ffffff;
+	-webkit-box-shadow:inset 0px 34px 0px -15px #ffffff;
+	box-shadow:inset 0px 34px 0px -15px #ffffff;
+	background-color:#ffffff;
+	border:1px solid #241d13;
+	display:inline-block;
+	cursor:pointer;
+	color:black;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:9px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #7a2a1d;
+}
+
+.btn_huy:HOVER {
+	-moz-box-shadow:inset 0px 34px 0px -15px #c0c0c0;
+	-webkit-box-shadow:inset 0px 34px 0px -15px #c0c0c0;
+	box-shadow:inset 0px 34px 0px -15px #c0c0c0;
+	background-color:#c0c0c0;
+	border:1px solid #241d13;
+	display:inline-block;
+	cursor:pointer;
+	color:black;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:9px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #7a2a1d;
+}
+
+#chitiet_btn_xong{
+	display: none;
+}
+
+#tuvung, #nghia{
+	display: none;
+}
  

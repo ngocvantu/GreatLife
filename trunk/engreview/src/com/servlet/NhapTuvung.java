@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -42,6 +43,7 @@ public class NhapTuvung extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		request.getSession().setAttribute("sotuvung", TuVungUtil.getAllTuVung().size());
 		
 		String tuvung = request.getParameter("tuvung");
 		String nghia = request.getParameter("nghia");
@@ -55,7 +57,8 @@ public class NhapTuvung extends HttpServlet {
 		String ghichu = request.getParameter("ghichu");
 		
 		if(tuvung!=null && nghia!= null && !tuvung.equals("") && !nghia.equals("")){
-			TuVung tuVung2 = new TuVung(tuvung, nghia, vidu1, vidu2, tuloai, noihoc, tudongnghia, tutrainghia, new Date(), ghichu, false, 0);
+			TuVung tuVung2 = new TuVung(tuvung, nghia, vidu1, vidu2,
+					tuloai, noihoc, tudongnghia, tutrainghia, new Date(), ghichu, false, 0);
 //			TuVungUtil.addTuVung(tuVung2);
 			
 			SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -68,7 +71,8 @@ public class NhapTuvung extends HttpServlet {
 		}
 		System.out.println(tuvung);
 		
-		RequestDispatcher rd=request.getRequestDispatcher("index.jsp");  
+		RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
+		
 //		rd.forward(request, response);
 		response.sendRedirect(request.getContextPath() + "");
 	}

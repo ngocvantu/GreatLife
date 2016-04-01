@@ -42,6 +42,8 @@ li a.active {
   <li><a id="anhviet" href="<%=request.getContextPath()%>/anhviet">Anh-Việt</a></li>
   <li><a id="vietanh" href="<%=request.getContextPath()%>/vietanh">Việt-Anh</a></li>
   <li><a id="chitiet" href="<%=request.getContextPath()%>/chitiet">Chi tiết</a></li>
+  <li><a id="toeic600" href="<%=request.getContextPath()%>/toeic600">Toeic 600</a></li>
+  <li><a id="macdinh" href="<%=request.getContextPath()%>/macdinh">Cài đặt mặc định</a></li>
 </ul>
 </body>
 </html>
