@@ -29,7 +29,7 @@ public class TicTacToe extends JPanel implements ActionListener, MouseListener {
 	
 	public TicTacToe(Main main) { 
 		this.main = main;
-		main.setSize(800, 800);
+		main.setSize(800, 600);
 		addMouseListener(this);
 		setSize(165, 165);
 		setLocation(100, 200);
@@ -66,26 +66,63 @@ public class TicTacToe extends JPanel implements ActionListener, MouseListener {
 		board[i][j] = player;
 		repaint();
 		if(isWin(player,i,j)){
-			JOptionPane.showMessageDialog(null, "x thang");
+			JOptionPane.showMessageDialog(null, player +" thang");
 		}
 		player = - player;
 	}
 	
 	private boolean isWin(int player, int i, int j) {
-		if(player == X){
-			for (int i2 = 0; i2 < n - 3; i2++) {
-				if(board[i2][j] == X && board[i2+1][j] == X && board[i2+2][j] == X 
-						&& board[i2+3][j] == X  ){
+		 
+			// truc x
+			for (int i2 = 0; i2 < n - 4; i2++) {
+				if(board[i2][j] == player && board[i2+1][j] == player && board[i2+2][j] == player
+						&& board[i2+3][j] == player && board[i2+4][j] == player  ){
 					return true;
 				}
 			}
-			for (int j2 = 0; j2 < n-3; j2++) {
-				if(board[i][j2] == X && board[i][j2+1] == X && board[i][j2+2] == X 
-						&& board[i][j2+3] == X  ){
+			// truc y
+			for (int j2 = 0; j2 < n-4; j2++) {
+				if(board[i][j2] == player && board[i][j2+1] == player && board[i][j2+2] == player
+						&& board[i][j2+3] == player && board[i][j2+4] == player  ){
 					return true;
 				}
 			}
-		}
+			// cheo phai \
+			if(j-i<n-4 && j-i >=0){
+				for (int j2 = j-i; j2 < n-4; j2++) {
+					if(board[j2-(j-i)][j2] == player && board[j2-(j-i) +1][j2+1] == player
+							&& board[j2-(j-i)+2][j2+2] == player && board[j2-(j-i)+3][j2+3] == player && board[j2-(j-i)+4][j2+4] == player){
+						return true;
+					}
+				}
+			} else if(i-j < n-4 && i-j >=0){
+				for (int i2 = i-j; i2 < n-3; i2++) {
+					if(board[i2][i2-(i-j)] == player && board[i2+1][i2-(i-j)+1] == player 
+							&& board[i2+2][i2-(i-j)+2] == player && board[i2+3][i2-(i-j)+3] == player && board[i2+4][i2-(i-j)+4] == player){
+						return true;
+					}
+				}
+			}
+			
+			if(i+j < n && i+j >3){
+				for (int j2 = 0; j2 < i+j-3; j2++) {
+					if(board[i+j-j2][j2] == player && board[i+j-j2-1][j2+1] == player 
+							&& board[i+j-j2-2][j2+2] == player && board[i+j-j2-3][j2+3] == player && board[i+j-j2-4][j2+4] == player  ){
+						return true;
+					}
+				}
+			} else if(i+j >= n && i+j < 2*(n-1)-3){
+				for (int i2 = n-1; i2 > i+j-(n-3); i2--) {
+					System.out.println();
+					if(board[i2][i+j-i2] == player 
+							&& board[i2-1][i+j-i2+1] == player 
+							&& board[i2-2][i+j-i2+2] == player
+							&& board[i2-3][i+j-i2+3] == player && board[i2-4][i+j-i2+4] == player  ){
+						return true;
+					}
+				}
+			}
+	 
 		return false;
 	}
 

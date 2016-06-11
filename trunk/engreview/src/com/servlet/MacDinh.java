@@ -49,7 +49,7 @@ public class MacDinh extends HttpServlet {
 		request.getSession().setAttribute("noihoc", noihoc);
 		request.getSession().setAttribute("ghichu", ghichu);
 		
-		request.setAttribute("daxong", "Cài đặt xong !");
+		request.setAttribute("daxong", "Successfully install !");
 		
 		RequestDispatcher rd=request.getRequestDispatcher("macdinh.jsp");  
 		rd.forward(request, response);

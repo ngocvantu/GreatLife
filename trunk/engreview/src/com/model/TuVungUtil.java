@@ -208,8 +208,10 @@ public class TuVungUtil {
 			  tuvung = (TuVung) query.list().get(0);
 		} catch (Exception e) { 
 			return null;
+		} 
+		if(tuvung!=null){
+			TuVungUtil.updateSoLanOn(tuvung.getId() + "");
 		}
-		
 		session.getTransaction().commit();
 		session.close();
 		return tuvung;
@@ -261,6 +263,26 @@ public class TuVungUtil {
 	         tuVung.setDathuoc(dathuoc);
 	         tuVung.setSolanon(solanon);
 	         
+			 session.update(tuVung); 
+	         tx.commit();
+	      }catch (HibernateException e) {
+	         if (tx!=null) tx.rollback();
+	         e.printStackTrace(); 
+	      }finally {
+	         session.close(); 
+	      }
+		
+	}
+	
+	public static void updateSoLanOn(String id_){
+		int id = Integer.valueOf(id_);
+		Session session = HibernateUtil.getSessionFactory().openSession();
+	    Transaction tx = null;
+	    try{
+	         tx = session.beginTransaction();
+	         TuVung tuVung = 
+	                    (TuVung)session.get(TuVung.class, id); 
+	         tuVung.setSolanon(tuVung.getSolanon()+1);
 			 session.update(tuVung); 
 	         tx.commit();
 	      }catch (HibernateException e) {

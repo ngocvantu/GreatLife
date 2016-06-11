@@ -1,0 +1,22 @@
+
+public class docfileexcel {
+
+	public static void main(String[] args) {
+        try {
+            File file = new File("C:\\demo.xls");
+            Workbook wb = Workbook.getWorkbook(file);
+            Sheet sheet = wb.getSheet(0);
+        int rows = sheet.getRows();
+        int cols = sheet.getColumns();
+        for(int row = 0; row < rows; row++) {
+        for(int col = 0; col < cols; col++) {
+        System.out.print(sheet.getCell(col, row).getContents()+"  ");
+}
+    System.out.println("\n");
+}
+        } catch (Exception ex) {
+            Logger.getLogger(docfileexcel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+}

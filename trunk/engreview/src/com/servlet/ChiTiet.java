@@ -34,14 +34,14 @@ public class ChiTiet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id  = request.getParameter("id");
 		if(id == null){
-			TuVung listTuVung = TuVungUtil.getTuVungByOrder(0).get(0);
-			request.setAttribute("listTuVung", listTuVung);
+			TuVung tuVung = TuVungUtil.getTuVungByOrder(0).get(0);
+			request.setAttribute("listTuVung", tuVung);
 		} else {
-			TuVung listTuVung = TuVungUtil.getTuVungById(Integer.valueOf(id));
-			if(listTuVung == null){
-				  listTuVung = TuVungUtil.getTuVungLast();
+			TuVung tuVung = TuVungUtil.getTuVungById(Integer.valueOf(id));
+			if(tuVung == null){
+				  tuVung = TuVungUtil.getTuVungLast();
 			}
-			request.setAttribute("listTuVung", listTuVung);
+			request.setAttribute("listTuVung", tuVung);
 		}
 		RequestDispatcher rd=request.getRequestDispatcher("chitiet.jsp");  
 		rd.forward(request, response);

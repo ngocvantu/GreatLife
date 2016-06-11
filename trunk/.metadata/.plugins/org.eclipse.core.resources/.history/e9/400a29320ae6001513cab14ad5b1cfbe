@@ -1,0 +1,228 @@
+package com.hello;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
+
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+
+import com.panel.AddPoor;
+
+import javax.swing.LayoutStyle.ComponentPlacement;
+
+public class HelloSwing {
+
+	private JFrame frame;
+	AddPoor addPoor = new AddPoor();
+	private JTextField textField;
+	  JPanel panel_1 = new JPanel();
+	  JPanel panel = new JPanel();
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					HelloSwing window = new HelloSwing();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public HelloSwing() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		
+		final JPanel panel_3;
+		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(255, 255, 255));
+		frame.getContentPane().setLayout(null);
+//		frame.setUndecorated(true);
+		
+		
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel.setBounds(1, 1, 231, 713);
+		frame.getContentPane().add(panel);
+		
+		final JButton btnNewButton_1 = new JButton("Danh s\u00E1ch h\u1ED9 ngh\u00E8o");
+		btnNewButton_1.setForeground(new Color(0, 0, 255));
+		btnNewButton_1.setToolTipText("kkkk");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				btnNewButton_1.setBackground(new Color(225, 225, 225));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnNewButton_1.setBackground(new Color(211, 211, 211));
+			}
+		});
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(panel);
+				frame.getContentPane().add(panel_1);
+				frame.repaint();
+			}
+		});
+		btnNewButton_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnNewButton_1.setBorderPainted(false);
+		btnNewButton_1.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton_1.setBackground(new Color(211, 211, 211));
+		btnNewButton_1.setFocusPainted(false);
+		
+		
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_1.setBounds(232, 1, 1132, 713);
+		panel_1.setLayout(null);
+		frame.getContentPane().add(panel_1);
+		
+		  JButton btnThmHNgho = new JButton("Th\u00EAm h\u1ED9 ngh\u00E8o");
+		btnThmHNgho.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnThmHNgho.setBackground(new Color(225, 225, 225));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnThmHNgho.setBackground(new Color(211, 211, 211));
+			}
+		});
+		btnThmHNgho.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnThmHNgho.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(panel);
+				frame.getContentPane().add(addPoor);
+				addPoor.setVisible(true);
+				frame.getContentPane().repaint();
+			}
+		});
+		btnThmHNgho.setToolTipText("kkkk");
+		btnThmHNgho.setHorizontalAlignment(SwingConstants.LEFT);
+		btnThmHNgho.setForeground(Color.BLUE);
+		btnThmHNgho.setFocusPainted(false);
+		btnThmHNgho.setBorderPainted(false);
+		btnThmHNgho.setBackground(new Color(211, 211, 211));
+		
+		JButton btnThot = new JButton("Tho\u00E1t \u0111\u0103ng nh\u1EADp");
+		btnThot.setFocusPainted(false);
+		btnThot.setBorderPainted(false);
+		btnThot.setBackground(new Color(216, 191, 216));
+		btnThot.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
+							.addComponent(btnNewButton_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(btnThmHNgho, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(54)
+							.addComponent(btnThot, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addGap(61)))
+					.addGap(0))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(43)
+					.addComponent(btnNewButton_1)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnThmHNgho, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 533, Short.MAX_VALUE)
+					.addComponent(btnThot)
+					.addGap(63))
+		);
+		panel.setLayout(gl_panel);
+		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{btnNewButton_1}));
+		
+		
+		
+//		frame.getContentPane().remove(panel_1);
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setLocation(2, 0);
+		tabbedPane.setSize(1130, 710);
+		panel_1.add(tabbedPane);
+		
+		  panel_3 = new JPanel(){
+			@Override
+			public void paint(Graphics g) {
+				// TODO Auto-generated method stub
+				super.paint(g);
+				g.fillArc(1000, 200, 50, 50, 0, 150);
+				g.setColor(Color.red);
+				g.fillArc(1000, 200, 50, 50, 150, 210);
+				
+			}
+			
+		};
+		panel_3.setLayout(null);
+		tabbedPane.addTab("New tab", new ImageIcon("C:\\Users\\tunguyen\\Desktop\\you.png"), panel_3, null);
+		
+		textField = new JTextField();
+		textField.setSize(173, 20);
+		textField.setLocation(144, 45);
+		panel_3.add(textField);
+		textField.setColumns(10);
+		
+		JButton btnBtn = new JButton("btn3");
+		panel_3.add(btnBtn);
+		
+		JLabel lblNewLabel = new JLabel("New label:");
+		lblNewLabel.setBounds(73, 48, 61, 14);
+		panel_3.add(lblNewLabel);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new TitledBorder(null, "2323223", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		tabbedPane.addTab("New tab", new ImageIcon("C:\\Users\\tunguyen\\Desktop\\youtube.png"), panel_2, null);
+		
+		JButton btnBtn_1 = new JButton("btn2");
+		btnBtn_1.setIcon(new ImageIcon("C:\\Users\\tunguyen\\Desktop\\youtube.png"));
+		panel_2.add(btnBtn_1);
+		frame.setBounds(0, 0, 1366, 750);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+}

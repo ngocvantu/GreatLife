@@ -1,0 +1,7 @@
+INDEX VERSION 1.3+E:\GreatLife\trunk\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2912873230.index
+3919368184.index
+363277020.index
+1407265399.index
+3628732246.index
+4220781705.index

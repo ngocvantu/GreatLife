@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.wb.internal.swing.model.property.editor.models.table.TableModelDialog">
+		<item value="551" key="height"/>
+		<item value="776" key="width"/>
+		<item value="93" key="y"/>
+		<item value="295" key="x"/>
+	</section>
+	<section name="org.eclipse.wb.internal.core.nls.ui.NlsDialog">
+		<item value="369" key="height"/>
+		<item value="683" key="width"/>
+		<item value="184" key="y"/>
+		<item value="341" key="x"/>
+	</section>
+</section>

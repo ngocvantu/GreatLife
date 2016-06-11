@@ -1,0 +1,8 @@
+21:44:56 **** Incremental Build of configuration Debug for project grgr ****
+Info: Internal Builder is used for build
+cl /c /EHs /MD /Zi /nologo "/Fosrc\\grgr.obj" "..\\src\\grgr.cpp" 
+grgr.cpp
+link /debug /nologo /OUT:grgr.exe "src\\grgr.obj" 
+
+21:44:57 Build Finished (took 629ms)
+

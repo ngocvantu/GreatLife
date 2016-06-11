@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.annotations.OnDelete;
 
 import com.hibernate.HibernateUtil;
 import com.model.TuVungUtil;
@@ -23,6 +24,7 @@ import com.object.TuVung;
  * Servlet implementation class NhapTuvung
  */
 @WebServlet("/nhaptuvung")
+
 public class NhapTuvung extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
