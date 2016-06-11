@@ -10,6 +10,10 @@
 <body>
 	chào bạn <span style="color:red" ><s:property value="string" /></span> nhe
 	<div id="date"></div>
+	<form action="getchao" method="post">
+		<input name="id" type="text" >
+		<input type="submit" >
+	</form>
 	
 	
 	<script type="text/javascript">
