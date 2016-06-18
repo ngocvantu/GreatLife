@@ -3,10 +3,21 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
+	<constant name="struts.action.extension" value="html"></constant>
+	
 	<package name="default"  extends="struts-default">
+		<action name="" class="com.tunguyen.Welcome">
+			<result  name="success" >/index.jsp</result>
+		</action>
+		
 		<action name="getchao" class="com.tunguyen.Chao" method="chaochao"  >
 			<result name="success" >/front/chao.jsp</result>
 			<result name="input" >/index.jsp</result>
 		</action> 
+		
+		<action name="radio" class="com.tunguyen.RadioButtonAction" method="display">
+			<result name="none" >/front/radio.jsp</result>
+		
+		</action>
 	</package>
 </struts>

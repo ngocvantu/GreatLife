@@ -8,9 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	pass: <s:property value="password" />
+ <s:actionerror/>
 	chào bạn <span style="color:red" ><s:property value="string" /></span> nhe
 	<div id="date"></div>
-	<form action="getchao" method="post">
+	<form action="radio.html" method="post">
 		<input name="id" type="text" >
 		<input type="submit" >
 	</form>
