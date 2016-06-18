@@ -67,7 +67,7 @@ public class dangnhap extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(32, 178, 170));
+		contentPane.setBackground(new Color(189, 183, 107));
 		contentPane.setForeground(Color.BLUE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -85,6 +85,7 @@ public class dangnhap extends JFrame {
 		panel_1.add(lblNewLabel);
 		
 		JButton btnngNhp = new JButton("\u0110\u0103ng nh\u1EADp");
+		btnngNhp.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		btnngNhp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// Khi người dùng nhập và nhấn nút "Đăng nhập"
@@ -96,7 +97,7 @@ public class dangnhap extends JFrame {
 				// check xem ten dang nhap va mat khau co ton tai trong csdl hay la khong
 				// bay gio can phai viet 1 phuong thuc check tai khoan dang nhap trong lop database, dau vao laf ten dang nhap va passs
 				if(Database.dangnhapok(username, pass)){
-					HelloSwing window = new HelloSwing();
+					HelloSwing window = new HelloSwing(username);
 					window.frame.setVisible(true);
 					setVisible(false);
 				} else {
@@ -104,8 +105,8 @@ public class dangnhap extends JFrame {
 				}
 			}
 		});
-		btnngNhp.setBackground(new Color(255, 0, 0));
-		btnngNhp.setBounds(166, 169, 130, 23);
+		btnngNhp.setBackground(new Color(255, 255, 255));
+		btnngNhp.setBounds(125, 188, 130, 23);
 		contentPane.add(btnngNhp);
 		
 		JLabel label = new JLabel("");
@@ -113,41 +114,42 @@ public class dangnhap extends JFrame {
 		contentPane.add(label);
 		
 		JLabel lblNewLabel_1 = new JLabel("T\u00EAn \u0111\u0103ng nh\u1EADp");
-		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 15));
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		lblNewLabel_1.setForeground(new Color(255, 0, 0));
-		lblNewLabel_1.setBounds(125, 70, 115, 14);
+		lblNewLabel_1.setBounds(125, 62, 130, 25);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("M\u1EADt kh\u1EA9u");
 		lblNewLabel_2.setForeground(new Color(255, 0, 0));
-		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 15));
-		lblNewLabel_2.setBounds(125, 109, 115, 14);
+		lblNewLabel_2.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblNewLabel_2.setBounds(140, 111, 115, 29);
 		contentPane.add(lblNewLabel_2);
 		
 		textField = new JTextField();
-		textField.setBounds(262, 64, 162, 20);
+		textField.setBounds(262, 62, 162, 29);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JButton button = new JButton("\u0110\u0103ng xu\u1EA5t");
-		button.setBackground(new Color(255, 0, 0));
+		button.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		button.setBackground(new Color(255, 255, 255));
 		button.setForeground(new Color(0, 0, 0));
-		button.setBounds(312, 169, 112, 23);
+		button.setBounds(303, 188, 121, 23);
 		contentPane.add(button);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(262, 95, 162, 23);
+		passwordField.setBounds(262, 117, 162, 23);
 		contentPane.add(passwordField);
 		
 		JLabel lblngNhp = new JLabel("\u0110\u0103ng nh\u1EADp");
 		lblngNhp.setForeground(Color.RED);
-		lblngNhp.setFont(new Font("Arial", Font.PLAIN, 30));
-		lblngNhp.setBounds(151, 11, 201, 51);
+		lblngNhp.setFont(new Font("Times New Roman", Font.PLAIN, 30));
+		lblngNhp.setBounds(182, 0, 201, 51);
 		contentPane.add(lblngNhp);
 		
 		JLabel lblNewLabel_3 = new JLabel("New label");
 		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\NGOC HOANG\\Desktop\\key.jpg"));
-		lblNewLabel_3.setBounds(10, 11, 105, 134);
+		lblNewLabel_3.setBounds(0, 40, 105, 134);
 		contentPane.add(lblNewLabel_3);
 	}
 }

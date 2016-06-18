@@ -29,6 +29,8 @@ import javax.swing.border.TitledBorder;
 
 
 
+
+
 import com.panel.AddPoor;
 import com.panel.Baocao;
 import com.panel.Database;
@@ -49,23 +51,23 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import java.awt.Rectangle;
 import java.awt.Font;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JScrollPane;
 
 public class HelloSwing {
 
 	public JFrame frame;
 	AddPoor addPoor;
-	private JTextField textFieldhoten;
+	private JTextField textFieldTen;
 	  JPanel panel_1 = new JPanel();
 	  JPanel panel = new JPanel();
 	  JButton btnThmHNgho = new JButton("Ph\u00E2n lo\u1EA1i h\u1ED9 ngh\u00E8o");
 	  Database database = new Database();
-	  private JTextField textField_1;
-	  private JTextField textField_2;
-	  private JTextField textField_3;
-	  private JPasswordField passwordField;
 	  JPanel panel_3 = null;
+	  String username;
 	/**
 	 * Launch the application.
 	 */
@@ -81,11 +83,16 @@ public class HelloSwing {
 			}
 		});
 	}
-
+	
+	public HelloSwing() {
+		initialize();
+	}
+	
 	/**
 	 * Create the application.
 	 */
-	public HelloSwing() {
+	public HelloSwing(String username) {
+		this.username = username;
 		initialize();
 	}
 
@@ -101,7 +108,7 @@ public class HelloSwing {
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\NGOC HOANG\\Desktop\\dangnhap.PNG"));
 		frame.getContentPane().setBackground(new Color(255, 255, 255));
 		frame.getContentPane().setLayout(null);
-		panel.setBackground(new Color(218, 165, 32));
+		panel.setBackground(new Color(233, 150, 122));
 //		frame.setUndecorated(true);
 		
 		
@@ -187,7 +194,7 @@ public class HelloSwing {
 		btnTiKhon.setForeground(Color.BLUE);
 		
 		JButton btnNewButton = new JButton("T\u00ECm ki\u1EBFm");
-		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 15));
+		btnNewButton.setFont(new Font("Arusernameial", Font.PLAIN, 15));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Okok okok = new Okok();
@@ -288,90 +295,52 @@ public class HelloSwing {
 			
 		};
 		  panel_3.setForeground(new Color(0, 0, 0));
-		  panel_3.setBackground(new Color(32, 178, 170));
+		  panel_3.setBackground(new Color(189, 183, 107));
 		  panel_3.setLocation(233, 1);
 		  tabbedPane_1.addTab("New tab", null, panel_3, null);
 		  panel_3.setLayout(null);
 		  
-		  textFieldhoten = new JTextField();
-		  textFieldhoten.setSize(173, 29);
-		  textFieldhoten.setLocation(538, 31);
-		  panel_3.add(textFieldhoten);
-		  textFieldhoten.setColumns(10);
+		  textFieldTen = new JTextField();
+		  textFieldTen.setSize(173, 29);
+		  textFieldTen.setLocation(538, 31);
+		  panel_3.add(textFieldTen);
+		  textFieldTen.setColumns(10);
 		  
 		  JButton btnBtn = new JButton("btn3");
 		  panel_3.add(btnBtn);
 		  
-		  JLabel lblNewLabel = new JLabel("H\u1ECD t\u00EAn");
+		  JLabel lblNewLabel = new JLabel("Tên đăng nhập");
 		  lblNewLabel.setFont(new Font("Arial", Font.BOLD, 15));
 		  lblNewLabel.setForeground(new Color(0, 0, 0));
-		  lblNewLabel.setBounds(370, 46, 84, 14);
+		  lblNewLabel.setBounds(333, 46, 173, 14);
 		  panel_3.add(lblNewLabel);
 		  
-		  JLabel lblChcV = new JLabel("Ch\u1EE9c v\u1EE5");
+		  JLabel lblChcV = new JLabel("Mật khẩu");
 		  lblChcV.setFont(new Font("Arial", Font.BOLD, 15));
 		  lblChcV.setForeground(new Color(0, 0, 0));
-		  lblChcV.setBounds(370, 101, 69, 14);
+		  lblChcV.setBounds(370, 101, 136, 14);
 		  panel_3.add(lblChcV);
 		  
-		  textField_1 = new JTextField();
-		  textField_1.setBounds(538, 139, 173, 29);
-		  panel_3.add(textField_1);
-		  textField_1.setColumns(10);
-		  
-		  JLabel lblSinThoi = new JLabel("S\u1ED1 \u0111i\u1EC7n tho\u1EA1i");
-		  lblSinThoi.setFont(new Font("Arial", Font.BOLD, 15));
-		  lblSinThoi.setForeground(new Color(0, 0, 0));
-		  lblSinThoi.setBounds(370, 145, 114, 14);
-		  panel_3.add(lblSinThoi);
-		  
-		  JLabel lblEmail = new JLabel("Email");
-		  lblEmail.setFont(new Font("Arial", Font.BOLD, 15));
-		  lblEmail.setForeground(new Color(0, 0, 0));
-		  lblEmail.setBounds(370, 193, 69, 14);
-		  panel_3.add(lblEmail);
-		  
-		  textField_2 = new JTextField();
-		  textField_2.setBounds(538, 193, 173, 29);
-		  panel_3.add(textField_2);
-		  textField_2.setColumns(10);
-		  
-		  JLabel lblTnngNhp = new JLabel("T\u00EAn \u0111\u0103ng nh\u1EADp");
-		  lblTnngNhp.setFont(new Font("Arial", Font.BOLD, 15));
-		  lblTnngNhp.setForeground(new Color(0, 0, 0));
-		  lblTnngNhp.setBounds(370, 256, 114, 14);
-		  panel_3.add(lblTnngNhp);
-		  
-		  textField_3 = new JTextField();
-		  textField_3.setBounds(538, 248, 173, 32);
-		  panel_3.add(textField_3);
-		  textField_3.setColumns(10);
-		  
-		  passwordField = new JPasswordField();
-		  passwordField.setBounds(538, 307, 173, 29);
-		  panel_3.add(passwordField);
-		  
-		  JLabel lblMtKhu = new JLabel("M\u1EADt kh\u1EA9u");
-		  lblMtKhu.setFont(new Font("Arial", Font.BOLD, 15));
-		  lblMtKhu.setForeground(new Color(0, 0, 0));
-		  lblMtKhu.setBounds(370, 322, 84, 14);
-		  panel_3.add(lblMtKhu);
-		  
-		  JButton btnSa = new JButton("S\u1EEDa");
-		  btnSa.setFont(new Font("Arial", Font.PLAIN, 15));
-		  btnSa.setForeground(new Color(255, 0, 0));
-		  btnSa.setBounds(370, 429, 103, 32);
-		  panel_3.add(btnSa);
-		  
-		  JButton btnLu = new JButton("L\u01B0u");
-		  btnLu.addActionListener(new ActionListener() {
+		  ResultSet rs = Database.gettaikhoan(username);
+		  try {
+			while (rs.next()) { 
+				textFieldTen.setText(rs.getString(1));
+				textFieldPass.setText(rs.getString(2));
+			  }
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		  JButton btnSa = new JButton("Xóa");
+		  btnSa.addActionListener(new ActionListener() {
 		  	public void actionPerformed(ActionEvent arg0) {
+		  		Database.deleteTaiKhoan(textFieldTen.getText(), textFieldPass.getText());
 		  	}
 		  });
-		  btnLu.setFont(new Font("Arial", Font.PLAIN, 15));
-		  btnLu.setForeground(new Color(255, 0, 0));
-		  btnLu.setBounds(663, 429, 103, 32);
-		  panel_3.add(btnLu);
+		  btnSa.setFont(new Font("Arial", Font.PLAIN, 15));
+		  btnSa.setForeground(new Color(255, 0, 0));
+		  btnSa.setBounds(473, 429, 103, 32);
+		  panel_3.add(btnSa);
 		  
 		  JLabel lblNewLabel_1 = new JLabel("New label");
 		  lblNewLabel_1.setBackground(new Color(0, 128, 128));
@@ -379,14 +348,31 @@ public class HelloSwing {
 		  lblNewLabel_1.setBounds(41, 46, 257, 253);
 		  panel_3.add(lblNewLabel_1);
 		  
-		  textField_4 = new JTextField();
-		  textField_4.setBounds(538, 90, 173, 29);
-		  panel_3.add(textField_4);
-		  textField_4.setColumns(10);
+		  textFieldPass = new JTextField();
+		  textFieldPass.setBounds(538, 90, 173, 29);
+		  panel_3.add(textFieldPass);
+		  textFieldPass.setColumns(10);
+		  
+		  JButton btnThmTiKhon = new JButton("Thêm tài khoản");
+		  btnThmTiKhon.addActionListener(new ActionListener() {
+		  	public void actionPerformed(ActionEvent e) {
+		  		if(textFieldTen.getText().length() > 0 && textFieldPass.getText().length() > 0){
+		  			Database.themTaiKhoan(textFieldTen.getText(), textFieldPass.getText());
+		  		}
+		  	}
+		  });
+		  btnThmTiKhon.setForeground(new Color(255, 0, 0));
+		  btnThmTiKhon.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		  btnThmTiKhon.setBounds(211, 429, 161, 29);
+		  panel_3.add(btnThmTiKhon);
+		  
+		  JScrollPane scrollPane = new JScrollPane();
+		  scrollPane.setBounds(0, 506, 587, 177);
+		  panel_3.add(scrollPane);
 		frame.setBounds(0, 0, 1366, 750);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	JTabbedPane tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
-	private JTextField textField_4;
+	private JTextField textFieldPass;
 }

@@ -66,7 +66,7 @@ public class Diaphuong<ttcoban> extends JPanel implements ItemListener {
 //		table.getColumnModel().getColumn(1).setPreferredWidth(64);
 //	table.getColumnModel().getColumn(2).setPreferredWidth(68);
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 365, 1140, 394);
+		scrollPane.setBounds(0, 433, 1140, 324);
 		add(scrollPane);
 		
 		table = new JTable();
@@ -98,11 +98,11 @@ public class Diaphuong<ttcoban> extends JPanel implements ItemListener {
 		// dang lam
 		
 		setBounds(new Rectangle(233, 1, 1131, 713));
-		setBackground(new Color(32, 178, 170));
+		setBackground(new Color(189, 183, 107));
 		setLayout(null);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(580, 23, 157, 31);
+		comboBox.setBounds(434, 39, 148, 31);
 		comboBox.addItemListener(this);
 		add(comboBox);
 		ResultSet ttx= Database.getAllHuyen();
@@ -117,8 +117,8 @@ public class Diaphuong<ttcoban> extends JPanel implements ItemListener {
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setFont(new Font("Arial", Font.PLAIN, 15));
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Hoa L\u1ED9c", "Ph\u00FA L\u1ED9c", "Quang L\u1ED9c", "Minh L\u1ED9c"}));
-		comboBox_1.setBackground(new Color(64, 224, 208));
-		comboBox_1.setBounds(855, 20, 102, 35);
+		comboBox_1.setBackground(new Color(245, 255, 250));
+		comboBox_1.setBounds(434, 124, 148, 31);
 		add(comboBox_1);
 		comboBox_1.addItemListener(this);
 		
@@ -139,7 +139,7 @@ public class Diaphuong<ttcoban> extends JPanel implements ItemListener {
 
 		btnthem.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnthem.setForeground(new Color(255, 0, 0));
-		btnthem.setBounds(387, 23, 89, 28);
+		btnthem.setBounds(387, 359, 89, 28);
 		add(btnthem);
 		
 		JButton btnsua = new JButton("S\u1EEDa");
@@ -163,13 +163,13 @@ public class Diaphuong<ttcoban> extends JPanel implements ItemListener {
 		});
 		btnsua.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnsua.setForeground(new Color(255, 0, 0));
-		btnsua.setBounds(387, 139, 89, 35);
+		btnsua.setBounds(588, 356, 89, 35);
 		add(btnsua);
 		
 		JButton btnNewButton_2 = new JButton("L\u01B0u");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				Format formatter = new SimpleDateFormat("yyyy");
 				com.object.ttcoban ttcoban = new com.object.ttcoban(Integer.valueOf(textstt.getText()), texthuyen.getText(), textxa.getText(),
 						textTenChuHo.getText(), textMaHo.getText(), Integer.valueOf(textTTCapThe.getText()), formatter.format(new Date()));
 				
@@ -183,8 +183,8 @@ public class Diaphuong<ttcoban> extends JPanel implements ItemListener {
 		
 		
 		btnNewButton_2.setFont(new Font("Arial", Font.PLAIN, 15));
-		btnNewButton_2.setForeground(new Color(255, 0, 0));
-		btnNewButton_2.setBounds(772, 259, 89, 35);
+		btnNewButton_2.setForeground(new Color(0, 0, 0));
+		btnNewButton_2.setBounds(660, 136, 89, 35);
 		add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("B\u00E1o c\u00E1o");
@@ -192,9 +192,9 @@ public class Diaphuong<ttcoban> extends JPanel implements ItemListener {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_3.setForeground(new Color(255, 0, 0));
+		btnNewButton_3.setForeground(new Color(0, 0, 0));
 		btnNewButton_3.setFont(new Font("Arial", Font.PLAIN, 15));
-		btnNewButton_3.setBounds(580, 259, 89, 35);
+		btnNewButton_3.setBounds(808, 136, 89, 35);
 		add(btnNewButton_3);
 		
 		
@@ -265,7 +265,7 @@ public class Diaphuong<ttcoban> extends JPanel implements ItemListener {
 								int  ttcapthe = (int)cell.getNumericCellValue();
 								System.out.print("  ttcapthe: " + ttcapthe);
 								
-								SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+								SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
 								com.object.ttcoban thongtincoban= new com.object.ttcoban( stt, huyen,  xa,  chuho, mahongheo,  ttcapthe,  sdf.format(new Date()));
 								
 								Database.addttcoban(thongtincoban);
@@ -287,8 +287,8 @@ public class Diaphuong<ttcoban> extends JPanel implements ItemListener {
 	
 	
 		btnLyThngTin.setFont(new Font("Times New Roman", Font.PLAIN, 17));
-		btnLyThngTin.setForeground(Color.RED);
-		btnLyThngTin.setBounds(580, 122, 208, 35);
+		btnLyThngTin.setForeground(new Color(0, 0, 0));
+		btnLyThngTin.setBounds(660, 35, 208, 35);
 		add(btnLyThngTin);
 		// load thong tin co ban
 		
@@ -351,78 +351,95 @@ public class Diaphuong<ttcoban> extends JPanel implements ItemListener {
 		});
 		btnxoa.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnxoa.setForeground(Color.RED);
-		btnxoa.setBounds(387, 261, 89, 28);
+		btnxoa.setBounds(756, 358, 89, 28);
 		add(btnxoa);
 		
 		
 		
 		JLabel lblNewLabel = new JLabel("STT");
-		lblNewLabel.setBounds(40, 31, 46, 14);
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblNewLabel.setBounds(40, 31, 60, 17);
 		add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Huyện");
-		lblNewLabel_1.setBounds(40, 75, 46, 14);
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblNewLabel_1.setBounds(40, 75, 60, 28);
 		add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Xã");
-		lblNewLabel_2.setBounds(40, 124, 46, 14);
+		lblNewLabel_2.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblNewLabel_2.setBounds(40, 124, 60, 33);
 		add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Tên chủ hộ");
+		lblNewLabel_3.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		lblNewLabel_3.setToolTipText("Tên chủ hộ");
-		lblNewLabel_3.setBounds(40, 174, 46, 14);
+		lblNewLabel_3.setBounds(40, 174, 95, 31);
 		add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Mã hộ ");
+		lblNewLabel_4.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		lblNewLabel_4.setToolTipText("Mã hộ");
-		lblNewLabel_4.setBounds(40, 226, 46, 14);
+		lblNewLabel_4.setBounds(40, 235, 75, 31);
 		add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("TTcấp thẻ");
+		lblNewLabel_5.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		lblNewLabel_5.setToolTipText("TT Cấp thẻ");
-		lblNewLabel_5.setBounds(40, 280, 46, 14);
+		lblNewLabel_5.setBounds(39, 302, 76, 30);
 		add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("Ngày nhập");
+		lblNewLabel_6.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		lblNewLabel_6.setToolTipText("Ngày nhập");
-		lblNewLabel_6.setBounds(40, 330, 46, 14);
+		lblNewLabel_6.setBounds(40, 364, 95, 20);
 		add(lblNewLabel_6);
 		
 		textstt = new JTextField();
-		textstt.setBounds(145, 28, 129, 20);
+		textstt.setBounds(145, 28, 129, 31);
 		add(textstt);
 		textstt.setColumns(10);
 		
 		texthuyen = new JTextField();
-		texthuyen.setBounds(145, 72, 129, 20);
+		texthuyen.setBounds(145, 72, 129, 31);
 		add(texthuyen);
 		texthuyen.setColumns(10);
 		
 		textxa = new JTextField();
-		textxa.setBounds(145, 121, 129, 20);
+		textxa.setBounds(145, 121, 129, 36);
 		add(textxa);
 		textxa.setColumns(10);
 		
 		textTenChuHo = new JTextField();
-		textTenChuHo.setBounds(145, 171, 129, 20);
+		textTenChuHo.setBounds(145, 174, 129, 31);
 		add(textTenChuHo);
 		textTenChuHo.setColumns(10);
 		
 		textMaHo = new JTextField();
-		textMaHo.setBounds(145, 223, 129, 20);
+		textMaHo.setBounds(145, 235, 129, 31);
 		add(textMaHo);
 		textMaHo.setColumns(10);
 		
 		textTTCapThe = new JTextField();
-		textTTCapThe.setBounds(145, 277, 129, 20);
+		textTTCapThe.setBounds(145, 302, 129, 31);
 		add(textTTCapThe);
 		textTTCapThe.setColumns(10);
 		
 		textNgayNhap = new JTextField();
 		textNgayNhap.setEditable(false);
-		textNgayNhap.setBounds(145, 327, 129, 20);
+		textNgayNhap.setBounds(145, 364, 129, 28);
 		add(textNgayNhap);
 		textNgayNhap.setColumns(10);
+		
+		JLabel lblHuyn = new JLabel("Huyện");
+		lblHuyn.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblHuyn.setBounds(343, 39, 67, 22);
+		add(lblHuyn);
+		
+		JLabel lblX = new JLabel("Xã");
+		lblX.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblX.setBounds(343, 123, 67, 35);
+		add(lblX);
 		
 		
 		loadData();

@@ -88,6 +88,27 @@ public class Database {
 		
 	}
 	
+	public static ResultSet gettaikhoan(String username) {
+		ResultSet result  = null;
+		try {
+			//tạo câu lệnh
+			stmt  = conn.prepareStatement("select * from taikhoan");
+			// thực hiện câu lệnh và gán kết quả vào đối tượng  ResultSet của java
+			  result = stmt.executeQuery("select * from taikhoan where User = '" + username + "'");
+			// in rra kết quả
+		while (result.next()) {    // duyệt kết quả từ 0ầu chí cuối
+			System.out.println(result.getString("User") + ": " + result.getString("Quyen"));
+			
+		}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+		
+	}
+	
 	/**
 	 * Đêm số hộ với loại hộ và năm truyền vào
 	 * @param loaiho
@@ -111,6 +132,44 @@ public class Database {
 		return total;
 	}
 	
+	public static int getSoHoByHuyen(String huyen, String nam) {
+		ResultSet result = null;
+		int total = 0;
+		String sql = "SELECT COUNT(Maho) AS total FROM ttcoban WHERE Ngaynhap = '" +nam + "' AND Huyen = '" + huyen + "'";
+		if(huyen == null){
+			sql = "SELECT COUNT(Maho) AS total FROM ttcoban WHERE Ngaynhap = '" +nam + "'";
+		}
+		try {
+			stmt  = conn.prepareStatement("select DISTINCT  Huyen from diaphuong");
+			  result = stmt.executeQuery(sql);
+			  while (result.next()) { 
+				  total = result.getInt("total");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return total;
+	}
+	
+	public static int getSoHo(int loaiho, String nam, String xa) {
+		ResultSet result = null;
+		int total = 0;
+		String sql = "SELECT COUNT(MaHN) AS total FROM hongheo WHERE Ngaynhap = '" +nam + "' AND Maloaiho = '" + loaiho + "'" + "AND Maxa = '" + xa + "'";
+		try {
+			stmt  = conn.prepareStatement("select DISTINCT  Huyen from diaphuong");
+			  result = stmt.executeQuery(sql);
+			  while (result.next()) { 
+				  total = result.getInt("total");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return total;
+	}
+	
+	 
 	/**
 	 * 
 	 * @param uname
@@ -139,6 +198,7 @@ public class Database {
 		}
 		return false;
 	}
+	
 	public static ResultSet getAllxa()
 	{ 
 		ResultSet result = null;
@@ -153,6 +213,39 @@ public class Database {
 		return result;
 		
 	}
+	
+	public static ResultSet getHoNgheoByNam(String nam)
+	{ 
+		ResultSet result = null;
+		try {
+			stmt  = conn.prepareStatement("select  * from xa");
+			// thực hiện câu lệnh và gán kết quả vào đối tượng  ResultSet của java
+			  result = stmt.executeQuery("SELECT hongheo.*, diaphuong.Huyen FROM hongheo, diaphuong where hongheo.Maxa = diaphuong.Maxa AND hongheo.Ngaynhap = '" + nam + "'");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+		
+	}
+	
+	public static ResultSet getHoNgheoByNamAndXaHuyen(String huyen, String xa, String nam)
+	{ 
+		ResultSet result = null;
+		try {
+			stmt  = conn.prepareStatement("select  * from xa");
+			// thực hiện câu lệnh và gán kết quả vào đối tượng  ResultSet của java
+			  result = stmt.executeQuery("SELECT hongheo.*, diaphuong.Huyen FROM hongheo, diaphuong where "
+			  		+ "hongheo.Maxa = diaphuong.Maxa AND hongheo.Ngaynhap = '" + nam + "' AND "
+			  				+ "hongheo.Maxa = '" + xa + "' AND diaphuong.Huyen = '" + huyen + "'");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+		
+	}
+	
 	
 	public static ResultSet getAllxa(String huyen)
 	{ 
@@ -274,7 +367,7 @@ public class Database {
 		try {
 			stmt  = conn.prepareStatement("select * from tieuchi" );  //??
 			// thực hiện câu lệnh và gán kết quả vào đối tượng  ResultSet của java
-			  result = stmt.executeQuery("select DISTINCT NamAD  from tieuchi ORDER BY NamAD");
+			  result = stmt.executeQuery("select DISTINCT NamAD  from tieuchi ORDER BY NamAD DESC");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -307,22 +400,50 @@ public class Database {
 		hongheo.getMaKV() + "','"+ hongheo.getMaYte()+ "');"
 		;
 		
+		if(Database.tontai(hongheo.getMaHN(), hongheo.getNgaynhap())){
+			sql = "UPDATE  hongheo  SET `Maxa`='"+hongheo.getMaxa()+"',`Maloaiho`="+hongheo.getMaloaiho()+","+
+					"`Thunhap`='"+hongheo.getThunhap()+"',`MaTTNhaO`='"+hongheo.getMattNhao()+"',"+
+					"`MaTT`='"+hongheo.getMaTT()+"',`ManuocSH`='"+hongheo.getManuocSH()+"',"+
+					 "`Mahocvan`='"+hongheo.getMahocvan()+"',"+
+					"`B1`='"+hongheo.getB1()+"',`B2`='"+hongheo.getB2()+"',"+
+					"`Chuho`='"+hongheo.getChuho()+"',`Nhankhau`='"+hongheo.getNhankhau()+"',"+
+					"`MaKV`='"+hongheo.getMaKV()+"',`MaYT`='"+hongheo.getMaYte()+"' WHERE `MaHN` = '" + hongheo.getMaHN() + 
+					"' AND `Ngaynhap` = '"+ hongheo.getNgaynhap() + "';";
+		}
 		
 		try {
 			stmt = conn.createStatement();
 			stmt.executeUpdate(sql);
-			
-			
-			
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 	
 	
+	private static boolean tontai(String maHN, String ngaynhap) {
+		ResultSet result = null;
+		try {
+			stmt  = conn.prepareStatement("select * from tieuchi" );  //??
+			// thực hiện câu lệnh và gán kết quả vào đối tượng  ResultSet của java
+			  result = stmt.executeQuery("select * from hongheo "
+			  		+ "where MaHN = '" + maHN + "' AND Ngaynhap = '" + ngaynhap + "'");
+			  int i = 0;
+			  while (result.next()) {
+				i++;
+			}
+			  if(i>0){
+				  System.out.println("ton tai ho ngheo " + maHN);
+				  return true;
+			  }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		return false;
+	}
+
 	public static void addttcoban(ttcoban thongtincoban){
 		Statement stm = null;
 		String sql  = "INSERT INTO ttcoban   VALUES ('"+thongtincoban.getstt()+"','" + thongtincoban.gethuyen() + "','" +
@@ -493,6 +614,34 @@ public class Database {
 		// như vậy là tạo kết nối thành công
 		// in kết quả thành công
 		
+	}
+
+	public static void deleteTaiKhoan(String text, String text2) { 
+		ResultSet result = null;
+		try {
+			stmt  = conn.prepareStatement("delete  from ttcoban where Maho =  '" + "kk" + "';");//??
+			// thực hiện câu lệnh và gán kết quả vào đối tượng  ResultSet của java
+			 stmt.executeUpdate("delete  from taikhoan where User =  '" + text + "' AND Pass = '" + text2 +"'"
+			  		);
+		} catch (SQLException e) {
+			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	public static void themTaiKhoan(String text, String text2) { 
+		ResultSet result = null;
+		try {
+			stmt  = conn.createStatement();//??
+			// thực hiện câu lệnh và gán kết quả vào đối tượng  ResultSet của java
+			 stmt.executeUpdate("INSERT INTO taikhoan VALUES ('" + text + "','" + text2 + "','" + "4');"
+			  		);
+		} catch (SQLException e) {
+			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 	}
 
 }

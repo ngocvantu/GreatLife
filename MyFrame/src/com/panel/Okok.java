@@ -36,14 +36,14 @@ public class Okok extends JPanel implements ItemListener {
 	 * Create the panel.
 	 */
 	public Okok() {
-		setBackground(new Color(32, 178, 170));
+		setBackground(new Color(189, 183, 107));
 		
 		setBounds(233, 1, 1131, 713);
 		setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\NGOC HOANG\\Desktop\\timkiem3.jpg"));
-		lblNewLabel_1.setBounds(682, 17, 411, 177);
+		lblNewLabel_1.setBounds(819, 56, 312, 256);
 		add(lblNewLabel_1);
 		
 		JButton btnTm = new JButton("T\u00ECm");
@@ -84,7 +84,7 @@ public class Okok extends JPanel implements ItemListener {
 		
 		btnTm.setForeground(Color.RED);
 		btnTm.setFont(new Font("Arial", Font.PLAIN, 20));
-		btnTm.setBounds(206, 119, 89, 35);
+		btnTm.setBounds(310, 238, 123, 35);
 		add(btnTm);
 		
 		scrollPane = new JScrollPane();
@@ -92,7 +92,7 @@ public class Okok extends JPanel implements ItemListener {
 		add(scrollPane);
 		
 		scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(20, 374, 1111, 316);
+		scrollPane_1.setBounds(0, 374, 1131, 316);
 		add(scrollPane_1);
 		
 		table = new JTable();
@@ -115,24 +115,24 @@ public class Okok extends JPanel implements ItemListener {
 		
 		JButton btnNewButton = new JButton("S\u1EEDa");
 		btnNewButton.setForeground(Color.RED);
-		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 15));
-		btnNewButton.setBounds(300, 191, 107, 35);
+		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		btnNewButton.setBounds(564, 25, 107, 35);
 		add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("X\u00F3a");
 		btnNewButton_1.setForeground(Color.RED);
-		btnNewButton_1.setFont(new Font("Arial", Font.PLAIN, 15));
-		btnNewButton_1.setBounds(514, 191, 107, 35);
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		btnNewButton_1.setBounds(564, 97, 107, 35);
 		add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("L\u01B0u");
 		btnNewButton_2.setForeground(Color.RED);
-		btnNewButton_2.setFont(new Font("Arial", Font.PLAIN, 15));
-		btnNewButton_2.setBounds(80, 298, 107, 35);
+		btnNewButton_2.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		btnNewButton_2.setBounds(564, 199, 107, 35);
 		add(btnNewButton_2);
 		
 		 
-		comboBox.setBounds(44, 25, 157, 31);
+		comboBox.setBounds(158, 25, 157, 31);
 		comboBox.addItemListener(this);
 		add(comboBox);
 		ResultSet ttx= Database.getAllHuyen();
@@ -146,27 +146,24 @@ public class Okok extends JPanel implements ItemListener {
 		}
 		
 		  
-		comboBox_1.setBounds(255, 25, 171, 31);
+		comboBox_1.setBounds(158, 94, 157, 31);
 		add(comboBox_1);
 		comboBox_1.addItemListener(this);
-		 
-		
-		JButton btnNewButton_3 = new JButton("Thêm");
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnNewButton_3.setBounds(80, 192, 89, 35);
-		add(btnNewButton_3);
-		
-		JButton btnBoCo = new JButton("Báo cáo");
-		btnBoCo.setBounds(318, 299, 89, 35);
-		add(btnBoCo);
 		
 		textField = new JTextField();
-		textField.setBounds(476, 17, 171, 40);
+		textField.setBounds(35, 238, 230, 40);
 		add(textField);
 		textField.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("Huyện");
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblNewLabel.setBounds(59, 25, 65, 31);
+		add(lblNewLabel);
+		
+		JLabel lblNewLabel_2 = new JLabel("Xã");
+		lblNewLabel_2.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblNewLabel_2.setBounds(59, 102, 65, 24);
+		add(lblNewLabel_2);
 
 	}
 

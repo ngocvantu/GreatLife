@@ -42,13 +42,13 @@ public class Tieuchi extends JPanel {
 	 */
 	public Tieuchi() {
 		setBounds(new Rectangle(233, 1, 1131, 713)); ///do chưa setBounds() 
-		setBackground(new Color(32, 178, 170));
+		setBackground(new Color(189, 183, 107));
 		setLayout(null);
 		
 		
 		btnNewButton.setForeground(new Color(255, 0, 0));
 		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 15));
-		btnNewButton.setBounds(277, 381, 89, 34);
+		btnNewButton.setBounds(417, 336, 89, 34);
 		add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("S\u1EEDa");
@@ -74,7 +74,7 @@ public class Tieuchi extends JPanel {
 		});
 		btnNewButton_1.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnNewButton_1.setForeground(new Color(255, 0, 0));
-		btnNewButton_1.setBounds(479, 381, 89, 34);
+		btnNewButton_1.setBounds(579, 336, 89, 34);
 		add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("L\u01B0u");
@@ -103,11 +103,11 @@ public class Tieuchi extends JPanel {
 
 			
 		});
-		btnNewButton_2.setBounds(706, 381, 89, 34);
+		btnNewButton_2.setBounds(914, 336, 89, 34);
 		add(btnNewButton_2);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 427, 1097, 274);
+		scrollPane.setBounds(0, 486, 1097, 215);
 		add(scrollPane);
 		
 		table = new JTable();
@@ -128,69 +128,69 @@ public class Tieuchi extends JPanel {
 		table.getColumnModel().getColumn(2).setPreferredWidth(74);
 		
 		JLabel lblCqbh = new JLabel("CQBH");
-		lblCqbh.setForeground(Color.RED);
-		lblCqbh.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblCqbh.setBounds(84, 46, 89, 28);
+		lblCqbh.setForeground(new Color(0, 0, 0));
+		lblCqbh.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblCqbh.setBounds(56, 47, 89, 28);
 		add(lblCqbh);
 		
 		textCQBH = new JTextField();
-		textCQBH.setBounds(190, 53, 114, 19);
+		textCQBH.setBounds(190, 47, 140, 25);
 		add(textCQBH);
 		textCQBH.setColumns(10);
 		
 		JLabel lblB = new JLabel("B1");
-		lblB.setForeground(Color.RED);
-		lblB.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblB.setBounds(84, 104, 89, 28);
+		lblB.setForeground(new Color(0, 0, 0));
+		lblB.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblB.setBounds(72, 104, 101, 28);
 		add(lblB);
 		
 		textB1 = new JTextField();
 		textB1.setColumns(10);
-		textB1.setBounds(190, 111, 114, 19);
+		textB1.setBounds(190, 104, 140, 26);
 		add(textB1);
 		
 		JLabel lblB_1 = new JLabel("B2");
-		lblB_1.setForeground(Color.RED);
-		lblB_1.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblB_1.setBounds(84, 152, 89, 28);
+		lblB_1.setForeground(new Color(0, 0, 0));
+		lblB_1.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblB_1.setBounds(72, 163, 101, 28);
 		add(lblB_1);
 		
 		textB2 = new JTextField();
 		textB2.setColumns(10);
-		textB2.setBounds(190, 159, 114, 19);
+		textB2.setBounds(190, 166, 140, 26);
 		add(textB2);
 		
 		JLabel lblMakv = new JLabel("MaKV");
-		lblMakv.setForeground(Color.RED);
-		lblMakv.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblMakv.setBounds(84, 199, 89, 28);
+		lblMakv.setForeground(new Color(0, 0, 0));
+		lblMakv.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblMakv.setBounds(72, 283, 89, 28);
 		add(lblMakv);
 		
 		textMakv = new JTextField();
 		textMakv.setColumns(10);
-		textMakv.setBounds(190, 206, 114, 19);
+		textMakv.setBounds(190, 285, 140, 28);
 		add(textMakv);
 		
 		JLabel lblNamad = new JLabel("NamAD");
-		lblNamad.setForeground(Color.RED);
-		lblNamad.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblNamad.setBounds(84, 251, 89, 28);
+		lblNamad.setForeground(new Color(0, 0, 0));
+		lblNamad.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblNamad.setBounds(72, 338, 89, 28);
 		add(lblNamad);
 		
 		textNamAD = new JTextField();
 		textNamAD.setColumns(10);
-		textNamAD.setBounds(190, 258, 114, 19);
+		textNamAD.setBounds(190, 338, 140, 25);
 		add(textNamAD);
 		
-		JLabel lblLoaiho = new JLabel("LoaiHo");
-		lblLoaiho.setForeground(Color.RED);
-		lblLoaiho.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblLoaiho.setBounds(361, 55, 89, 28);
+		JLabel lblLoaiho = new JLabel("Loại hộ");
+		lblLoaiho.setForeground(new Color(0, 0, 0));
+		lblLoaiho.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblLoaiho.setBounds(72, 226, 89, 28);
 		add(lblLoaiho);
 		
 		textLoaiHo = new JTextField();
 		textLoaiHo.setColumns(10);
-		textLoaiHo.setBounds(484, 62, 114, 19);
+		textLoaiHo.setBounds(190, 225, 140, 34);
 		add(textLoaiHo);
 		
 		JButton buttonXoa = new JButton("Xóa");
@@ -214,51 +214,53 @@ public class Tieuchi extends JPanel {
 		});
 		buttonXoa.setForeground(Color.RED);
 		buttonXoa.setFont(new Font("Dialog", Font.PLAIN, 15));
-		buttonXoa.setBounds(595, 381, 89, 34);
+		buttonXoa.setBounds(752, 335, 89, 34);
 		add(buttonXoa);
 		
 		JLabel lblB_2 = new JLabel("B12");
-		lblB_2.setForeground(Color.RED);
-		lblB_2.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblB_2.setBounds(342, 104, 50, 28);
+		lblB_2.setForeground(new Color(0, 0, 0));
+		lblB_2.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblB_2.setBounds(395, 102, 50, 28);
 		add(lblB_2);
 		
 		textB12 = new JTextField();
 		textB12.setColumns(10);
-		textB12.setBounds(413, 111, 114, 19);
+		textB12.setBounds(469, 104, 129, 28);
 		add(textB12);
 		
 		JLabel lblB_3 = new JLabel("B13");
-		lblB_3.setForeground(Color.RED);
-		lblB_3.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblB_3.setBounds(544, 104, 50, 28);
+		lblB_3.setBackground(new Color(240, 240, 240));
+		lblB_3.setForeground(new Color(0, 0, 0));
+		lblB_3.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblB_3.setBounds(669, 102, 50, 28);
 		add(lblB_3);
 		
 		textB13 = new JTextField();
 		textB13.setColumns(10);
-		textB13.setBounds(595, 111, 114, 19);
+		textB13.setBounds(752, 104, 129, 28);
 		add(textB13);
 		
 		JLabel lblB_4 = new JLabel("B22");
-		lblB_4.setForeground(Color.RED);
-		lblB_4.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblB_4.setBounds(342, 161, 50, 28);
+		lblB_4.setBackground(new Color(240, 240, 240));
+		lblB_4.setForeground(new Color(0, 0, 0));
+		lblB_4.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblB_4.setBounds(395, 161, 50, 28);
 		add(lblB_4);
 		
 		textB22 = new JTextField();
 		textB22.setColumns(10);
-		textB22.setBounds(413, 159, 114, 19);
+		textB22.setBounds(469, 163, 129, 25);
 		add(textB22);
 		
 		JLabel lblB_5 = new JLabel("B23");
-		lblB_5.setForeground(Color.RED);
-		lblB_5.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblB_5.setBounds(548, 152, 50, 28);
+		lblB_5.setForeground(new Color(0, 0, 0));
+		lblB_5.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblB_5.setBounds(669, 161, 50, 28);
 		add(lblB_5);
 		
 		textB23 = new JTextField();
 		textB23.setColumns(10);
-		textB23.setBounds(595, 159, 114, 19);
+		textB23.setBounds(752, 163, 129, 28);
 		add(textB23);
 		
 

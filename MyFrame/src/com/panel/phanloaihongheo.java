@@ -40,6 +40,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.object.HoNgheo;
+import javax.swing.ImageIcon;
 
 public class phanloaihongheo extends JPanel implements ItemListener {
 	private JTable table = new JTable();
@@ -52,19 +53,20 @@ public class phanloaihongheo extends JPanel implements ItemListener {
 	 * Create the panel.
 	 */
 	public phanloaihongheo() {
-		setBackground(new Color(32, 178, 170));
+		setBackground(new Color(189, 183, 107));
 		setBounds(233, 1, 1131, 713);
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Huyện");
-		lblNewLabel.setForeground(new Color(255, 0, 0));
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-		lblNewLabel.setBounds(59, 43, 95, 45);
+		lblNewLabel.setForeground(new Color(0, 0, 0));
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblNewLabel.setBounds(42, 178, 95, 45);
 		add(lblNewLabel);
 		
-		comboBox.setBounds(181, 50, 179, 36);
+		comboBox.setBounds(170, 184, 179, 36);
 		add(comboBox);
 		comboBox.addItemListener(this);
+		comboNamApDung.addItemListener(this);
 
 		ResultSet ttx1= Database.getAllHuyen();
 		try {
@@ -79,7 +81,7 @@ public class phanloaihongheo extends JPanel implements ItemListener {
 		}
 		
 		
-		comboBox_1.setBounds(583, 46, 179, 45);
+		comboBox_1.setBounds(170, 248, 179, 36);
 		comboBox_1.addItemListener(this); // lắng nghe sự kiện chọn item
 		add(comboBox_1);
 		
@@ -296,14 +298,15 @@ public class phanloaihongheo extends JPanel implements ItemListener {
 								//
 								HoNgheo hongheo = new HoNgheo(mahongheo, chuho,
 										thongtin1, ttnhao1, thunhap, khuvuc,
-										nuocSH1, maLoaiHo, nhankhau1, sdf
-												.format(new Date()) + "",
+										nuocSH1, maLoaiHo, nhankhau1, (String)comboNamApDung.getSelectedItem(),
 										hocvan, maxa, yte1, B1, B2);
+								
 								Database.nhapHoNgheo(hongheo);
 							 
 						}
 						JOptionPane.showMessageDialog(null,
 								"Nhập data từ cel vào db thành công");
+						loadData();
 					} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -314,17 +317,17 @@ public class phanloaihongheo extends JPanel implements ItemListener {
 				}
 			}
 		});
-		btnNewButton.setBounds(257, 204, 179, 45);
+		btnNewButton.setBounds(460, 179, 179, 45);
 		add(btnNewButton);
 		
 		JButton btnNewButton_2 = new JButton("L\u01B0u th\u00F4ng tin");
 		btnNewButton_2.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnNewButton_2.setForeground(new Color(255, 0, 0));
-		btnNewButton_2.setBounds(509, 204, 179, 45);
+		btnNewButton_2.setBounds(460, 283, 179, 45);
 		add(btnNewButton_2);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 275, 1121, 427);
+		scrollPane.setBounds(10, 362, 1121, 340);
 		add(scrollPane);
 		
 		
@@ -347,12 +350,12 @@ public class phanloaihongheo extends JPanel implements ItemListener {
 		
 		
 		JLabel lblX = new JLabel("Xã");
-		lblX.setFont(new Font("Times New Roman", Font.PLAIN, 17));
-		lblX.setBounds(503, 59, 46, 14);
+		lblX.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblX.setBounds(42, 250, 63, 29);
 		add(lblX);
 		
 		
-		comboNamApDung.setBounds(181, 103, 179, 36);
+		comboNamApDung.setBounds(170, 315, 179, 36);
 		add(comboNamApDung);
 		
 		try {
@@ -366,14 +369,87 @@ public class phanloaihongheo extends JPanel implements ItemListener {
 		}
 	  
 		
-		JLabel lblNamApDung = new JLabel("namAD");
-		lblNamApDung.setForeground(Color.RED);
-		lblNamApDung.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblNamApDung.setBounds(59, 94, 95, 45);
+		JLabel lblNamApDung = new JLabel("Năm AD");
+		lblNamApDung.setForeground(new Color(0, 0, 0));
+		lblNamApDung.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblNamApDung.setBounds(42, 306, 95, 45);
 		add(lblNamApDung);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\NGOC HOANG\\Desktop\\nongthonmoi2.jpg"));
+		lblNewLabel_1.setBounds(10, 11, 1121, 140);
+		add(lblNewLabel_1);
+		 
+		loadData();
 	}
 		
 		
+	private void loadData() { 
+		System.out.println("load data");
+		ResultSet rs = Database.getHoNgheoByNamAndXaHuyen((String)comboBox.getSelectedItem(),(String)comboBox_1.getSelectedItem(),
+				(String)comboNamApDung.getSelectedItem());
+		DefaultTableModel dm = (DefaultTableModel) table.getModel();
+		int rowCount = dm.getRowCount();
+		//Remove rows one by one from the end of the table
+		for (int i = rowCount - 1; i >= 0; i--) {
+		    dm.removeRow(i);
+		}
+		int i = 0;
+		System.out.println("load data");
+		try {
+			while (rs.next()) { 
+				System.out.println("so cot = " + rs.getMetaData().getColumnCount());
+				dm.addRow(new Object[]{" ", " ", " "," ", " ", " "," ", " "," "," "});
+				// bây giờ duyệt từng cột của 1 hàng
+				table.getModel().setValueAt(i+1, i, 0);
+				
+					// xa
+					String str  = rs.getString("Maxa") ;
+					table.getModel().setValueAt(str, i, 1); 
+					
+					// ma ho
+					String mahn  = rs.getString("MaHN") ;
+					table.getModel().setValueAt(mahn, i, 2);
+					
+					// 
+					String chuho  = rs.getString("Chuho") ;
+					table.getModel().setValueAt(chuho, i, 3);
+					
+					//  
+					String khuvuc  = rs.getString("MaKV") ;
+					if(khuvuc.equals("1")) khuvuc = "nông thôn" ;
+					else khuvuc ="thành thị";
+					table.getModel().setValueAt(khuvuc, i, 4);
+					
+				//  
+					String b1  = rs.getString("B1") ;
+					table.getModel().setValueAt(b1, i, 5);
+					
+					
+				//  
+					String b2  = rs.getString("B2") ;
+					table.getModel().setValueAt(b2, i, 6);
+					
+				//  
+					String thunhap  = rs.getString("Thunhap") ;
+					table.getModel().setValueAt(thunhap, i, 7);
+					
+				//  
+					String loaiho  = rs.getString("Maloaiho") ;
+					if(loaiho.equals("1")) loaiho = "hộ cận nghèo" ;
+					else if (loaiho.equals("2")) loaiho = "hộ nghèo" ;
+					else loaiho =" ";
+					table.getModel().setValueAt(loaiho, i, 8);
+				i++;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+}
+
+
 	@Override
 	public void itemStateChanged(ItemEvent event) { 
 		// khi chọn combobox
@@ -398,13 +474,13 @@ public class phanloaihongheo extends JPanel implements ItemListener {
 				while (set.next()) {
 					 	 
 						comboBox_1.addItem(set.getString("Maxa"));
-
+						
 				}
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+			loadData();
 			  
 		} else if(cb==comboBox_1){ 
 			if(comboBox_1.getItemCount() >= 1){
@@ -471,9 +547,10 @@ public class phanloaihongheo extends JPanel implements ItemListener {
 										e.printStackTrace();
 									}
 		}
-			
+			loadData();
+		} else if(cb==comboNamApDung){
+		loadData();
 		}
-		
 	}
 }
 
